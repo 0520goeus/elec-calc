@@ -1,0 +1,15 @@
+{
+  "name": "전기세 얼마",
+  "tagline": "가전제품 하나가 전기요금을 얼마나 올리는지 계산해요",
+  "url": "https://0520goeus.github.io/elec-calc",
+  "adsense_client": "",
+  "blog_url": "https://lifefixnote-kr.blogspot.com/",
+  "price_note_url": "https://0520goeus.github.io/price-note/",
+  "hub_url": "https://0520goeus.github.io/life-money-lab/",
+  "tariff_checked": "2026-11-23",
+  "default_base_kwh": 250,
+  "indexnow_key": "e50fa8bbea0106c7baf8f5c3249d5a67",
+  "google_file": "google873809343766a3b6.html",
+  "naver_verification": "",
+  "coupang_widget_html": "<script src=\"https://ads-partners.coupang.com/g.js\"></script><script>new PartnersCoupang.G({\"id\":1049499,\"template\":\"carousel\",\"trackingCode\":\"AF9170267\",\"width\":\"100%\",\"height\":\"140\",\"tsource\":\"\"});</script>"
+}

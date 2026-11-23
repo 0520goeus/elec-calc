@@ -1,0 +1,53 @@
+name: 전기세 얼마 자동 빌드·배포
+
+on:
+  schedule:
+    - cron: '10 15 * * *' # 매일 00:10 KST
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build-deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Build static calculator site
+        run: python3 build.py
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+      - id: deployment
+        uses: actions/deploy-pages@v4
+      - name: Ping IndexNow (Bing/Naver)
+        continue-on-error: true
+        run: |
+          python3 -c "
+          import json, urllib.request
+          site = json.load(open('site.json', encoding='utf-8'))
+          urls = [u.strip() for u in open('dist/urls.txt', encoding='utf-8') if u.strip()]
+          host = site['url'].split('//')[1].split('/')[0]
+          payload = json.dumps({'host': host, 'key': site['indexnow_key'], 'keyLocation': site['url'] + '/' + site['indexnow_key'] + '.txt', 'urlList': urls}).encode()
+          for ep in ['https://api.indexnow.org/indexnow', 'https://searchadvisor.naver.com/indexnow']:
+              try:
+                  req = urllib.request.Request(ep, data=payload, headers={'Content-Type': 'application/json'})
+                  urllib.request.urlopen(req, timeout=10)
+              except Exception as e:
+                  print(ep, e)
+          "
