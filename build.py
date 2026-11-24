@@ -99,7 +99,8 @@ def head(title, desc, path, extra=""):
 
 
 def foot(script=True):
-    return f"""</main>
+    return f"""<div style="margin:20px auto;max-width:960px;padding:16px 20px;border-radius:14px;background:linear-gradient(135deg,#0f172a,#0f766e);color:#fff;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;"><div><div style="font-weight:800;font-size:16px;">2026 직장인·1인셀러 무매크로 자동계산 엑셀 3종 올인원 번들</div><div style="font-size:13px;opacity:.9;margin-top:2px;">1인셀러 마진·ROAS + 내집마련 매물10개 비교 + 월급 가계부·순자산 대시보드 (즉시 다운로드)</div></div><a href="https://scopekit-studio.lemonsqueezy.com/checkout/buy/ba4f11c6-8609-49c0-a947-39bead163d74" target="_blank" rel="noopener" style="background:#facc15;color:#0f172a;padding:10px 18px;border-radius:10px;font-weight:800;font-size:14px;text-decoration:none;white-space:nowrap;">3종 번들 즉시 다운로드 →</a></div>
+</main>
 <footer class="foot"><div class="wrap">
   <p>주택용 전력(저압) 요금표 기준, {esc(SITE["tariff_checked"])}에 확인했어요. 실제 청구 금액은 검침일, 할인, TV 수신료에 따라 달라져요.</p>
   <p><a href="{BASE}/about/">계산 기준과 한계</a> · <a href="{esc(SITE.get('price_note_url','https://0520goeus.github.io/price-note/'))}" rel="noopener">해뎐 가격노트</a> · <a href="{esc(SITE.get('hub_url','https://0520goeus.github.io/life-money-lab/'))}" rel="noopener">생활비 물가 연구소</a> · <a href="https://0520goeus.github.io/vs-pick/" rel="noopener">가성비 VS 비교 사전</a> · <a href="https://0520goeus.github.io/life-fee-calc/" rel="noopener">평수별 가전용량·직구관세</a> · <a href="https://0520goeus.github.io/money-calc-kr/" rel="noopener">연봉 실수령액</a> · <a href="https://0520goeus.github.io/benefit-calc-kr/" rel="noopener">지원금·실업급여 계산기</a> · <a href="https://0520goeus.github.io/seller-margin-calc/" rel="noopener">셀러 마진 계산기</a> · <a href="{esc(SITE["blog_url"])}" rel="noopener">생활해결 노트</a></p>
